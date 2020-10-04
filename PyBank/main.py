@@ -10,12 +10,14 @@ max_change = 0
 min_change = 0
 previous = 0
 current_value = 0
+total_changes = 0
 
 with open(budget_data_path,  "r", newline="") as budget_data:
     csv_reader  = csv.reader(budget_data, delimiter=",")
     csv_header = next(csv_reader)
 
     for row in csv_reader:
+        total_changes += 1
         total_months += 1
         total_budget += int(row[1])
 
@@ -29,11 +31,14 @@ with open(budget_data_path,  "r", newline="") as budget_data:
         
         if (change < min_change):
             min_change = change
+    
 
 print (total_months)
 print (total_budget)
 print (max_change)
 print (min_change)
+print (total_changes)
+
 
 
 print(
