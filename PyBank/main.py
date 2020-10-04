@@ -10,7 +10,7 @@ max_change = 0
 min_change = 0
 previous = 0
 current_value = 0
-total_changes = 0
+total_changes = -1
 total_in_changes = 0
 
 with open(budget_data_path,  "r", newline="") as budget_data:
@@ -18,7 +18,14 @@ with open(budget_data_path,  "r", newline="") as budget_data:
     csv_header = next(csv_reader)
     first_row = next(csv_reader)
     previous = first_row[1]
+
+with open(budget_data_path,  "r", newline="") as budget_data:
+    csv_reader  = csv.reader(budget_data, delimiter=",")
+    csv_header = next(csv_reader)
+    # first_row = next(csv_reader)
+    # previous = first_row[1]
     for row in csv_reader:
+        print(row)
         total_changes += 1
         total_months += 1
         total_budget += int(row[1])
@@ -54,6 +61,6 @@ print(
    f"Total Months: {total_months}\n"
    f"Total: ${total_budget}\n"
    f"Average  Change: {average_change}\n"
-   f"Greatest Increase in Profits: {max_date_change} {max_change}\n"
-   f"Greatest Decrease in Profits: {min_date_change} {min_change}\n"
+   f"Greatest Increase in Profits: {max_date_change} (${max_change})\n"
+   f"Greatest Decrease in Profits: {min_date_change} (${min_change})\n"
     )
