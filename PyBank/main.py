@@ -28,9 +28,11 @@ with open(budget_data_path,  "r", newline="") as budget_data:
 
         if (change > max_change):
             max_change = change
+            max_date_change = row[0]
         
         if (change < min_change):
             min_change = change
+            min_date_change = row[0]
     
 
 print (total_months)
@@ -38,8 +40,8 @@ print (total_budget)
 print (max_change)
 print (min_change)
 print (total_changes)
-
-
+print (max_date_change)
+print (min_date_change)
 
 print(
    f"Financial Analysis\n"
@@ -47,6 +49,6 @@ print(
    f"Total Months: {total_months}\n"
    f"Total: ${total_budget}\n"
    f"Average  Change: 0\n"
-   f"Greatest Increase in Profits: {max_change}\n"
-   f"Greatest Decrease in Profits: {min_change}\n"
+   f"Greatest Increase in Profits: {max_date_change} {max_change}\n"
+   f"Greatest Decrease in Profits: {min_date_change} {min_change}\n"
     )
