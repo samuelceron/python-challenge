@@ -55,7 +55,7 @@ print (max_date_change)
 print (min_date_change)
 
 print(average_change)
-print(
+output=(
    f"Financial Analysis\n"
    f"----------------------------\n"
    f"Total Months: {total_months}\n"
@@ -64,3 +64,6 @@ print(
    f"Greatest Increase in Profits: {max_date_change} (${max_change})\n"
    f"Greatest Decrease in Profits: {min_date_change} (${min_change})\n"
     )
+analysis_file_path = os.path.join('Analysis','analysis.txt')
+with open(analysis_file_path,"w") as analysis_file:
+    analysis_file.write(output)
