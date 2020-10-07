@@ -40,8 +40,18 @@ print(
    f"Total Votes: {total_votes}\n"
    f"----------------------------\n")
 for i in range(len(candidates_list)):
-        print(f'{candidates_list[i]}: {percent_list[i]}% ({candidate_total[i]})')
+        print(f'{candidates_list[i]}: {(percent_list[i]):3.3f}% ({candidate_total[i]})')
 print(
     f"----------------------------\n"
    f"Winner: {winner}\n"
     )
+#Set exit path
+analysis_file_path = os.path.join('Analysis','analysis.txt')
+with open(analysis_file_path,"w") as analysis_file:
+    analysis_file.write(f"Election Results\n")
+    analysis_file.write(f"----------------------------\n")
+    analysis_file.write(f"Total Votes: {total_votes}\n")
+    for i in range(len(candidates_list)):
+        analysis_file.write(f'{candidates_list[i]}: {(percent_list[i]):3.3f}% ({candidate_total[i]})\n')
+    analysis_file.write(f"----------------------------\n")
+    analysis_file.write( f"Winner: {winner}\n")
